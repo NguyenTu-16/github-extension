@@ -55,7 +55,7 @@ header {
 }
 
 .viewer-section {
-    flex: 1; /* Both models get equal width */
+    flex: 1;
     position: relative;
     background: radial-gradient(circle at center, rgba(0, 242, 255, 0.03) 0%, transparent 70%);
 }
@@ -67,11 +67,17 @@ model-viewer {
 }
 
 .info-section {
-    flex: 0.7; /* Narrower info panel to save space */
+    flex: 0.7;
     padding: 1.5rem;
-    display: flex;
-    align-items: center;
     background: rgba(0, 0, 0, 0.2);
+    overflow-y: auto;
+}
+
+.scroll-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
 }
 
 .content-card {
@@ -80,7 +86,10 @@ model-viewer {
     padding: 2rem;
     border-radius: 20px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
-    width: 100%;
+}
+
+.bio-card {
+    border-color: rgba(112, 0, 255, 0.3);
 }
 
 .fact-box {
@@ -92,6 +101,21 @@ model-viewer {
     font-size: 0.95rem;
     line-height: 1.5;
     color: #cbd5e1;
+    transition: border-color 0.3s;
+}
+
+.bio-text {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #cbd5e1;
+    margin-bottom: 1rem;
+}
+
+.bio-text strong {
+    color: var(--primary);
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
 }
 
 .hint-text {
@@ -129,4 +153,13 @@ model-viewer {
 
 .Hotspot:hover .annotation {
     opacity: 1;
+}
+
+/* Custom Scrollbar */
+.info-section::-webkit-scrollbar {
+    width: 5px;
+}
+.info-section::-webkit-scrollbar-thumb {
+    background: var(--accent);
+    border-radius: 10px;
 }
