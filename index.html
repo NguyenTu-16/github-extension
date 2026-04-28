@@ -3,103 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cincinnati Football Highlights</title>
-    <style>
-        /* Bengals Color Scheme */
-        body {
-            background-color: #000000; /* Black background */
-            color: #FFFFFF; /* White text for contrast */
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-        
-        header {
-            background-color: #FB4F14; /* Bengals Orange */
-            padding: 30px;
-            text-align: center;
-            border-bottom: 5px solid #FFFFFF;
-        }
-
-        h1 {
-            margin: 0;
-            font-size: 2.5em;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: #000000;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 40px auto;
-            padding: 20px;
-        }
-
-        h2 {
-            color: #FB4F14;
-            border-bottom: 2px solid #333333;
-            padding-bottom: 10px;
-        }
-
-        .player-list {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        .player-list li {
-            background-color: #1A1A1A; /* Dark gray for cards */
-            margin-bottom: 15px;
-            padding: 20px;
-            border-left: 6px solid #FB4F14; /* Orange accent */
-            border-radius: 4px;
-            font-size: 1.2em;
-        }
-
-        .player-name {
-            font-weight: bold;
-            color: #FB4F14;
-            font-size: 1.1em;
-        }
-        
-        .position {
-            color: #CCCCCC;
-            font-style: italic;
-        }
-    </style>
+    <title>AstroTech Mission Control</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
 </head>
 <body>
-
     <header>
-        <h1>Who Dey!</h1>
+        <h1 class="logo">AstroTech Mission Control</h1>
+        <div class="status-indicator">DUAL SYSTEMS ONLINE</div>
     </header>
 
-    <div class="container">
-        <h2>Top 5 Franchise Players</h2>
-        <p>A quick look at the talent driving the team forward:</p>
-        
-        <ul class="player-list">
-            <li>
-                <span class="player-name">Joe Burrow</span> <br>
-                <span class="position">Quarterback</span>
-            </li>
-            <li>
-                <span class="player-name">Ja'Marr Chase</span> <br>
-                <span class="position">Wide Receiver</span>
-            </li>
-            <li>
-                <span class="player-name">Trey Hendrickson</span> <br>
-                <span class="position">Defensive End</span>
-            </li>
-            <li>
-                <span class="player-name">Tee Higgins</span> <br>
-                <span class="position">Wide Receiver</span>
-            </li>
-            <li>
-                <span class="player-name">Logan Wilson</span> <br>
-                <span class="position">Linebacker</span>
-            </li>
-        </ul>
-    </div>
+    <main class="container">
+        <section class="viewer-section">
+            <model-viewer 
+                id="astro-model"
+                src="https://modelviewer.dev/shared-assets/models/Astronaut.glb" 
+                camera-controls 
+                auto-rotate
+                camera-orbit="0deg 75deg 2.5m"
+                shadow-intensity="1">
+                
+                <button class="Hotspot" slot="hotspot-helmet" data-position="0 1.6 0.2" data-normal="0 0 1" data-part="helmet">
+                    <div class="annotation">Modern Helmet</div>
+                </button>
+                <button class="Hotspot" slot="hotspot-backpack" data-position="0 1.2 -0.4" data-normal="0 0 -1" data-part="backpack">
+                    <div class="annotation">Life Support</div>
+                </button>
+                <button class="Hotspot" slot="hotspot-gloves" data-position="-0.5 0.9 0.1" data-normal="-1 0 0" data-part="gloves">
+                    <div class="annotation">Tactile Gloves</div>
+                </button>
+                <button class="Hotspot" slot="hotspot-boots" data-position="0.2 0.1 0.2" data-normal="0 1 0" data-part="boots">
+                    <div class="annotation">Boots</div>
+                </button>
+                <button class="Hotspot" slot="hotspot-controls" data-position="0 1.15 0.25" data-normal="0 0 1" data-part="controls">
+                    <div class="annotation">DCM Controls</div>
+                </button>
+                <button class="Hotspot" slot="hotspot-pocket" data-position="-0.2 0.5 -0.1" data-normal="0 0 -1" data-part="pocket">
+                    <div class="annotation">Utility Pocket</div>
+                </button>
+            </model-viewer>
+        </section>
 
+        <section class="viewer-section" style="border-left: 1px solid rgba(0, 242, 255, 0.1);">
+            <model-viewer 
+                id="neil-model"
+                src="https://modelviewer.dev/shared-assets/models/NeilArmstrong.glb" 
+                camera-controls 
+                auto-rotate
+                camera-orbit="0deg 75deg 3m"
+                shadow-intensity="1">
+                
+                <button class="Hotspot" slot="hotspot-historic" data-position="0 1.5 0.2" data-normal="0 0 1" data-part="apollo_materials">
+                    <div class="annotation">Apollo Materials</div>
+                </button>
+                <button class="Hotspot" slot="hotspot-camera" data-position="0 1.1 0.3" data-normal="0 0 1" data-part="camera">
+                    <div class="annotation">Hasselblad Camera</div>
+                </button>
+                <button class="Hotspot" slot="hotspot-pressure" data-position="0 0.8 0.2" data-normal="0 0 1" data-part="pressure">
+                    <div class="annotation">Pressure System</div>
+                </button>
+            </model-viewer>
+        </section>
+
+        <section class="info-section">
+            <div class="content-card">
+                <h2 id="part-title">Mission Data</h2>
+                <div id="fact-display" class="fact-box">
+                    Select a component from either suit to begin technical analysis.
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
 </body>
 </html>
